@@ -1,0 +1,464 @@
+/* estilo.css */
+
+/* Estilos Generales */
+
+:root {
+    --primary-color: #007bff; /* Color primario de Bootstrap */
+    --secondary-color: #343a40; /* Gris oscuro */
+    --accent-color: #ffc107; /* Color de advertencia de Bootstrap */
+}
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    /* Background Image */
+    background-image: url('img/background.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.top-bar {
+    background-color: #f8f9fa;
+}
+
+.header {
+    position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 100; /* Asegura que esté por encima de otros contenidos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.main-nav .nav-link {
+    color: var(--secondary-color);
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    position: relative; /* Para el efecto de subrayado */
+    overflow: hidden; /* Oculta el desbordamiento del pseudo-elemento */
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link:focus {
+    color: var(--primary-color);
+}
+
+/* Efecto de subrayado */
+.main-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.main-nav .nav-link:hover::before,
+.main-nav .nav-link:focus::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Estilos del Menú Hamburguesa */
+.navbar-toggler {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Elimina el contorno de enfoque */
+    box-shadow: none; /* Elimina la sombra */
+}
+
+.navbar-toggler i {
+    font-size: 1.5rem; /* Ajusta el tamaño según sea necesario */
+    color: var(--secondary-color);
+}
+
+.logo img {
+    max-width: 200px; /* Tamaño base para pantallas grandes */
+    height: auto; /* Esto asegura que la altura se ajuste automáticamente para mantener la proporción del logo */
+    transition: transform 0.3s ease; /* Opcional: para un efecto visual al pasar el ratón */
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Opcional: para ampliar un poco el logo al pasar el ratón */
+}
+
+.welcome-heading {
+font-size: 2.6rem; /* Ajusta según veas necesario */
+font-weight: 700;
+color: #2c3e50; /* Color oscuro para "Cumple Tu" */
+line-height: 1.4;
+}
+
+/* Estilo para el texto con degradado */
+.gradient-text {
+background-image: linear-gradient(to right, #6a9cfd, #a17bfb); /* Degradado Azul a Violeta */
+background-clip: text;
+-webkit-background-clip: text; /* Compatibilidad */
+color: transparent;
+display: inline-block; /* Necesario a veces para que funcione el background-clip */
+}
+
+.welcome-text {
+font-size: 1.1rem; /* Tamaño de fuente del párrafo */
+color: #555e67;    /* Color grisáceo para el texto */
+line-height: 1.7;
+}
+
+.welcome-text strong {
+color: #333b45; /* Hacer la parte final un poco más oscura */
+font-weight: 600; /* Un poco más grueso que el bold normal */
+}
+
+/* --- Asegúrate que el fondo del body sigue siendo el degradado --- */
+body {
+/* ... (otros estilos del body) ... */
+background-image: linear-gradient(to bottom, #e6f7ff, #ffffff); /* Mantiene el degradado */
+/* ... */
+}
+
+
+
+.destino-card, .oferta-card, .testimonio-card {
+background-color: #fff; /* Fondo blanco sólido para tarjetas */
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.contact-form-card {
+background-color: #fff; /* Fondo blanco sólido */
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.section-title {
+    color: #007bff; /* Primary Color */
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    color: #777;
+}
+
+/* Header */
+.header {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-bottom: 1px solid #eee;
+}
+
+.logo img {
+    max-height: 60px;
+}
+
+.navbar-toggler {
+    border: none;
+    color: #007bff;
+}
+
+.nav-link {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+/* Carousel */
+.carousel-image {
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Destinations & Offers */
+.destino-card, .oferta-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+}
+
+.destino-card:hover, .oferta-card:hover {
+    transform: translateY(-5px);
+}
+
+.oferta-image {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+.price-ribbon-container {
+    position: relative; /*  Ensure correct stacking context */
+    overflow: hidden;    /* Clip overflowing content */
+    height: 30px;        /* Define a height, adjust as needed */
+}
+
+.price-ribbon {
+  position: absolute;  /*Position the ribbon absolutely */
+  top: 0;
+  right: 0;          /* Stick it to the top right */
+  background-color: #f0ad4e; /* A Gold/Amber color, adjust */
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;        /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  z-index: 10;              /* Ensure it's above other elements */
+}
+
+.price-ribbon-text {
+    display: block;       /* Takes up full width of the ribbon */
+    text-align: center;    /* Center the text */
+}
+
+/* Try other colors: #3498db (Blue), #e74c3c (Red), #8e44ad (Purple) */
+
+
+/* Testimonials */
+.testimonio-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+}
+
+/* Contact Form */
+.form-custom {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+}
+
+.form-custom:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.btn-custom {
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-weight: bold;
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+
+body {
+    background-color: #f0f2f5; /* Un gris muy claro, similar a la imagen */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.contact-section {
+    padding: 60px 0;
+}
+
+.contact-heading {
+    font-size: 2.8rem; /* Tamaño grande para el título */
+    font-weight: 700;
+    color: #2c3e50; /* Un azul oscuro/grisáceo */
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.contact-subtext {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.contact-form-card {
+    background-color: #fff;
+    padding: 2.5rem; /* Más padding interno */
+    border-radius: 12px; /* Esquinas más redondeadas */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+    border: none;
+}
+
+/* Estilo para labels similar a la imagen */
+.form-label {
+    font-size: 0.8rem;
+    color: #6c757d; /* Color gris para la etiqueta */
+    margin-bottom: 0.2rem;
+    display: block; /* Asegura que esté en su propia línea */
+}
+
+/* Estilo para inputs similar a la imagen (solo línea inferior) */
+.form-control-underline,
+.form-select-underline {
+    border: none;
+    border-bottom: 1px solid #ced4da; /* Línea inferior gris */
+    border-radius: 0; /* Sin bordes redondeados */
+    padding-left: 0; /* Alinear texto a la izquierda */
+    padding-right: 0;
+    box-shadow: none !important; /* Quitar sombra de focus */
+    background-color: transparent; /* Fondo transparente */
+}
+
+.form-control-underline:focus,
+.form-select-underline:focus {
+    border-color: #3b71ca; /* Color azul al enfocar */
+    background-color: transparent;
+}
+
+.form-select-underline {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); /* Flecha de Bootstrap */
+}
+
+/* Estilo para el checkbox y su etiqueta */
+.form-check-label {
+    font-size: 0.85rem;
+    color: #555;
+}
+.form-check-label a {
+    color: #0d6efd; /* Azul estándar de Bootstrap para enlaces */
+    text-decoration: none;
+}
+.form-check-label a:hover {
+    text-decoration: underline;
+}
+
+.btn-submit-custom {
+    background-color: #3b71ca; /* Azul similar al de la imagen */
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit-custom:hover {
+    background-color: #325ea8; /* Azul un poco más oscuro al pasar el mouse */
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #ccc;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #343a40 !important;
+    padding: 2rem 0;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Ajustes para tabletas (pantallas entre 768px y 991px de ancho) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .logo img {
+        max-width: 150px;
+    }
+}
+
+/* Ajustes para celulares (pantallas de 767px de ancho o menos) */
+@media (max-width: 767px) {
+    .logo img {
+        max-width: 100px;
+    }
+}
+
+/* Estilos para el menú en pantallas pequeñas */
+@media (max-width: 991px) {
+    .main-nav {
+        display: none; /* Oculta el menú principal por defecto en pantallas pequeñas */
+    }
+
+    .navbar-toggler {
+        display: block; /* Muestra el botón de menú hamburguesa */
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .navbar-toggler i {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+    }
+
+    /* Cuando el menú está abierto (se hace clic en el botón hamburguesa) */
+    .navbar-collapse.show {
+        display: block !important; /* Muestra el menú */
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        z-index: 1;
+    }
+
+    .navbar-collapse ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-collapse .nav-link {
+        padding: 0.5rem 0;
+        display: block;
+    }
+}
+
+/* Muestra el menú completo en pantallas grandes */
+@media (min-width: 992px) {
+    .main-nav {
+        display: flex !important; /* Asegura que el menú sea visible */
+    }
+
+    .navbar-toggler {
+        display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+    }
+}

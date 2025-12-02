@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Img/Yamaha-Logo.png" type="image/x-icon">
+    <title>Bahiacorp Agencia de Viajes Colombiana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar py-2 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <span class="small"><i class="fas fa-envelope me-2"></i> info@agenciadeviajes.com</span>
+                    <span class="ms-3 small"><i class="fas fa-phone me-2"></i> (123) 456-7890</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header bg-white shadow-sm py-3">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="logo">
+                        <a href="#" class="text-decoration-none">
+                            <img src="{{ url_for('static', filename='img/logobahia.jpg') }}" alt="Logo Agencia Colombia">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-auto d-lg-none">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="col-auto">
+                    <nav class="main-nav collapse navbar-collapse" id="navbarNav">
+                        <ul class="nav align-items-center">
+                            <li class="nav-item">
+                                <a class="nav-link px-3" href="#inicio">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3" href="#destinos">Destinos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3" href="#ofertas">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3" href="#testimonios">Testimonios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3" href="#contacto">Contacto</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-auto d-none d-lg-block">
+                    <div class="header-buttons">
+                        <a href="{{ url_for('logueo') }}" target="_blank" class="btn btn-outline-primary rounded-pill px-4">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carrusel (Solo Imágenes) -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='img/prueba.png') }}" class="d-block w-100 carrusel-image" alt="Paisaje Colombiano 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/mirador.png') }}" class="d-block w-100 carrusel-image" alt="Paisaje Colombiano 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/tairona.png') }}" class="d-block w-100 carrusel-image" alt="Paisaje Colombiano 3">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='img/car1.png') }}" class="d-block w-100 carrusel-image" alt="Paisaje Colombiano 3">
+            </div>
+    
+    
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Sección de Bienvenida -->
+   <!-- Sección Bienvenida - Estilo Imagen -->
+<section id="inicio" class="py-5 welcome-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9"> 
+                <div class="welcome-card bg-white text-center p-5 rounded-4 shadow animate__animated animate__fadeInUp">
+                    <h2 class="welcome-heading mb-4">
+                        Cumple Tu <span class="gradient-text">Sueño De Viajar</span>
+                    </h2>
+                    <p class="welcome-text lead">
+                        Somos tu mejor opción para vivir experiencias de viaje inolvidables. Ofrecemos paquetes diseñados para brindarte aventuras únicas, con destinos fascinantes y un servicio excepcional. <strong>Planifica con nosotros y crea recuerdos para toda la vida.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Fin Sección Bienvenida -->
+
+    <!-- Destinos Populares (Colombia) -->
+   <!-- Destinos Populares (Colombia) -->
+<section id="destinos" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title">Destinos Populares de Colombia</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/medellin.png') }}" class="card-img-top" alt="Medellín">
+                    <div class="card-body">
+                        <h5 class="card-title">Medellín, Ciudad Eterna Primavera</h5>
+                        <p class="card-text">Descubre la innovación, la cultura y el clima perfecto de Medellín.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $800.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for each destination -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/cartagena.png') }}" class="card-img-top" alt="Cartagena">
+                    <div class="card-body">
+                        <h5 class="card-title">Cartagena, la Joya del Caribe</h5>
+                        <p class="card-text">Déjate encantar por la historia, la arquitectura y las playas de Cartagena.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $950.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/mucura.png') }}" class="card-img-top" alt="Mucura">
+                    <div class="card-body">
+                        <h5 class="card-title">Isla Mucura - Golfo del Morrosquillo</h5>
+                        <p class="card-text">Es un destino turístico conocido por sus playas, aguas cristalinas y arrecifes de coral.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $1.200.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/salento.png') }}" class="card-img-top" alt="Salento">
+                    <div class="card-body">
+                        <h5 class="card-title">Salento</h5>
+                        <p class="card-text">Explora el Valle de Cocora y sus imponentes palmas de cera.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $650.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/filandia.png') }}" class="card-img-top" alt="Filandia">
+                    <div class="card-body">
+                        <h5 class="card-title">Filandia</h5>
+                        <p class="card-text">Disfruta de vistas panorámicas y la arquitectura tradicional de este encantador pueblo.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $550.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Santa Marta (2 Destinations) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/tairona1.png') }}" class="card-img-top" alt="Parque Tayrona">
+                    <div class="card-body">
+                        <h5 class="card-title">Parque Nacional Tayrona</h5>
+                        <p class="card-text">Camina por la selva tropical y relájate en las playas caribeñas.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $1.100.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/tatanga.png') }}" class="card-img-top" alt="Taganga">
+                    <div class="card-body">
+                        <h5 class="card-title">Taganga</h5>
+                        <p class="card-text">Descubre un relajado pueblo de pescadores con excelentes lugares para bucear.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $700.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cali (2 Destinations) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/sana.png') }}" class="card-img-top" alt="San Antonio">
+                    <div class="card-body">
+                        <h5 class="card-title">San Antonio</h5>
+                        <p class="card-text">Pasea por el barrio histórico con sus calles empedradas y arquitectura colonial.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $600.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/cristo.png') }}" class="card-img-top" alt="Cristo Rey">
+                    <div class="card-body">
+                        <h5 class="card-title">Cristo Rey</h5>
+                        <p class="card-text">Disfruta de vistas panorámicas desde la icónica estatua de Cristo Rey.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $500.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medellín (1 Destination) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/comuna13.png') }}" class="card-img-top" alt="Comuna 13">
+                    <div class="card-body">
+                        <h5 class="card-title">Comuna 13</h5>
+                        <p class="card-text">Experimenta el arte callejero vibrante y la resiliencia de este barrio transformado.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $750.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sucre (2 Destinations) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/rincon.png') }}" class="card-img-top" alt="Rincón del Mar">
+                    <div class="card-body">
+                        <h5 class="card-title">Rincón del Mar</h5>
+                        <p class="card-text">Relájate en las tranquilas playas de este pueblo costero.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $850.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/tolu.png') }}" class="card-img-top" alt="Tolú">
+                    <div class="card-body">
+                        <h5 class="card-title">Tolú</h5>
+                        <p class="card-text">Explora las playas y disfruta de esta pequeña ciudad de la costa caribe .</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $900.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barranquilla (1 Destination) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/carnaval .png') }}" class="card-img-top" alt="Carnaval de Barranquilla">
+                    <div class="card-body">
+                        <h5 class="card-title">Carnaval de Barranquilla</h5>
+                        <p class="card-text">Sumérgete en los vibrantes colores y la música del festival más grande de Colombia (estacional).</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $1.000.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Montería (1 Destination) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/rio.png') }}" class="card-img-top" alt="Río Sinú">
+                    <div class="card-body">
+                        <h5 class="card-title">Río Sinú, Montería</h5>
+                        <p class="card-text">Realiza un paseo en barco y admira las impresionantes vistas a lo largo de este río.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $650.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bogotá (2 Destinations) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/candelaria.png') }}" class="card-img-top" alt="La Candelaria">
+                    <div class="card-body">
+                        <h5 class="card-title">La Candelaria</h5>
+                        <p class="card-text">Pasea por las calles empedradas del corazón histórico de Bogotá.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $700.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/monserrate.png') }}" class="card-img-top" alt="Monserrate">
+                    <div class="card-body">
+                        <h5 class="card-title">Monserrate</h5>
+                        <p class="card-text">Sube en teleférico a este santuario en la cima de la montaña.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $750.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Los Llanos (1 Destination) -->
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/caño.png') }}" class="card-img-top" alt="Caño Cristales">
+                    <div class="card-body">
+                        <h5 class="card-title">Caño Cristales</h5>
+                        <p class="card-text">Sé testigo del impresionante 'Río de los Cinco Colores' en el corazón de Los Llanos (estacional).</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $1.500.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card destino-card">
+                    <img src="{{ url_for('static', filename='img/guatape.png') }}" class="card-img-top" alt="Caño Cristales">
+                    <div class="card-body">
+                        <h5 class="card-title">Piedra del Peñol</h5>
+                        <p class="card-text">monolito de 220 metros de altura, ubicado en el municipio de Guatapé, Antioquia.</p>
+                        <div class="price-ribbon-container">
+                            <div class="price-ribbon">
+                                <span class="price-ribbon-text">¡Desde $680.000 COP!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Ofertas Especiales -->
+  <section id="ofertas" class="py-5" style="background-color: rgba(248, 249, 250, 0.85);"> <!-- Fondo ligeramente diferente -->
+    <div class="container">
+        <h2 class="text-center mb-5 section-title">Ofertas Exclusivas</h2>
+        <div class="row">
+             <!-- Oferta 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="card oferta-card">
+                    <div class="row g-0">
+                        <div class="col-lg-5"> <!-- Ajuste de columnas para la imagen -->
+                            <img src="{{ url_for('static', filename='img/parquer.png') }}" class="img-fluid oferta-image" alt="Oferta Cartagena">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="card-body">
+                                <span class="badge bg-warning text-dark mb-2">¡Cupos Limitados!</span>
+                                <h5 class="card-title">Paquete Romántico en Cartagena</h5>
+                                <p class="card-text small">Incluye: Alojamiento 4 noches en hotel boutique, cena romántica, tour guiado por la ciudad amurallada, traslados.</p>
+                                <p class="card-text fs-5 fw-bold text-primary">Desde $1.500.000 COP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- Oferta 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="card oferta-card">
+                    <div class="row g-0">
+                         <div class="col-lg-5">
+                            <img src="{{ url_for('static', filename='img/aventura.png') }}" class="img-fluid oferta-image" alt="Oferta Eje Cafetero">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="card-body">
+                                <span class="badge bg-info text-dark mb-2">Aventura Familiar</span>
+                                <h5 class="card-title">Aventura en el Eje Cafetero</h5>
+                                <p class="card-text small">Incluye: Vuelos, 3 noches en finca cafetera, tour del café, visita a Salento y Valle de Cocora, Parque del Café.</p>
+                                 <p class="card-text fs-5 fw-bold text-primary">Desde $1.200.000 COP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonios -->
+<section id="testimonios" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title">Lo que dicen nuestros viajeros</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"¡Una experiencia maravillosa! La agencia superó nuestras expectativas."</p>
+                    <p class="fw-bold">- Juan Pérez</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"Excelente servicio y atención personalizada. ¡Volveremos la Proxima!"</p>
+                    <p class="fw-bold">- María López</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"La organización del viaje fue impecable.  Todo salió perfecto, desde el vuelo hasta el hotel."</p>
+                    <p class="fw-bold">- Carlos Rodríguez</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"Recomiendo Bahiacorp a todos los que buscan una agencia de viajes confiable y profesional."</p>
+                    <p class="fw-bold">- Ana García</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"Nos encantó la variedad de destinos que ofrecen y la flexibilidad para personalizar nuestro viaje."</p>
+                    <p class="fw-bold">- Pedro Sánchez</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card testimonio-card p-4">
+                    <p class="fst-italic">"El equipo de Bahiacorp siempre estuvo disponible para responder nuestras preguntas y ayudarnos en todo lo que necesitábamos."</p>
+                    <p class="fw-bold">- Laura Martínez</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Contacto -->
+    
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Contacto</h2>
+
+            <div class="row align-items-center justify-content-center">
+
+                <!-- Columna Izquierda: Texto -->
+                <div class="col-lg-5 col-md-10 mb-5 mb-lg-0 text-center text-lg-start">
+                    <h2 class="contact-heading animate__animated animate__fadeInLeft">Contáctanos y empieza a planificar tu próxima aventura</h2>
+                    <p class="contact-subtext animate__animated animate__fadeInLeft animate__delay-1s">
+                        No dude en ponerse en contacto con nosotros! Estamos ansiosos por ayudarlo a planificar la aventura de sus sueños y brindarle un servicio excepcional en todo momento.
+                    </p>
+                </div>
+
+                <!-- Columna Derecha: Formulario -->
+                <div class="col-lg-6 col-md-10">
+                    <div class="card contact-form-card animate__animated animate__fadeInRight">
+                        <form action="#" method="POST"> <!-- Reemplaza # con tu endpoint -->
+                            <div class="mb-3">
+                                <label for="contactNombre" class="form-label">Nombres (obligatorio)</label>
+                                <input type="text" class="form-control form-control-underline" id="contactNombre" name="nombre" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contactPais" class="form-label">País (obligatorio)</label>
+                                <select class="form-select form-select-underline" id="contactPais" name="pais" required>
+                                    <option value="Colombia +57" selected>Colombia +57</option>
+                                    <option value="Mexico +52">Mexico +52</option>
+                                    <option value="España +34">España +34</option>
+                                    <option value="Argentina +54">Argentina +54</option>
+                                    <option value="Otro">Otro</option>
+                                    <!-- Agrega más países según necesites -->
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contactTelefono" class="form-label">Teléfono (obligatorio)</label>
+                                <input type="tel" class="form-control form-control-underline" id="contactTelefono" name="telefono" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Correo Electrónico (obligatorio)</label>
+                                <input type="email" class="form-control form-control-underline" id="contactEmail" name="email" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="contactDescripcion" class="form-label">Descripción (opcional)</label>
+                                <textarea class="form-control form-control-underline" id="contactDescripcion" name="descripcion" rows="4"></textarea>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="contactTerminos" name="terminos" required>
+                                <label class="form-check-label" for="contactTerminos">
+                                    Estoy de acuerdo con los <a href="#">Términos y condiciones</a>, <a href="#">Política</a> y <a href="#">Privacidad</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit-custom">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer"> <!-- Clase renombrada -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5>Acerca de Bahiacorp</h5>
+                    <p>Tu agencia de viajes de confianza en Colombia. Creamos experiencias personalizadas e inolvidables para que descubras la belleza de nuestro país y el mundo.</p>
+                    <img src="{{ url_for('static', filename='img/logo1.png') }}" alt="Logo Bahiacorp Blanco" height="250" > <!-- Asumiendo un logo blanco -->
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#destinos">Destinos</a></li>
+                        <li><a href="#ofertas">Ofertas</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                         <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt fa-fw me-2"></i>  Colombia, Sincelejo Sucre</li>
+                        <li><i class="fas fa-phone fa-fw me-2"></i> +57 300 123 4567</li>
+                        <li><i class="fas fa-envelope fa-fw me-2"></i> info@bahiacorp.com</li>
+                        <li><i class="fab fa-whatsapp fa-fw me-2"></i> <a href="https://wa.me/573001234567" target="_blank">Chatea con nosotros</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Síguenos</h5>
+                    <p>Mantente al día con nuestras últimas ofertas y destinos.</p>
+                    <div class="d-flex">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                     <h5 class="mt-4">Suscríbete</h5>
+                     <form class="d-flex mt-2">
+                        <input type="email" class="form-control form-control-sm me-2" placeholder="Tu email">
+                        <button class="btn btn-primary btn-sm" type="submit">OK</button>
+                     </form>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="text-center">
+                <p>© 2024 Bahiacorp Agencia de Viajes. Todos los derechos reservados.</p>
+                <p class="small">Diseñado por Ing Franklin Baldovino</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Importante: Incluye Font Awesome para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

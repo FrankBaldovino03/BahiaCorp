@@ -1,0 +1,107 @@
+/* Estilos generales y fondo */
+body, html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    /* --- IMPORTANTE: Reemplaza con la URL o ruta de tu imagen --- */
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop');
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal para centrar */
+.login-wrapper {
+    min-height: 100vh;
+}
+
+/* Caja de login */
+.login-box {
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    max-width: 420px; /* Un poco más ancho para acomodar iconos */
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil opcional */
+}
+
+/* Estilo de los Input Groups */
+.input-group {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6); /* Línea inferior para todo el grupo */
+    transition: border-color 0.3s ease;
+}
+.input-group:focus-within {
+    border-bottom-color: #ffffff; /* Línea blanca sólida al enfocar cualquier elemento dentro */
+}
+
+
+/* Estilo del Span del Icono */
+.input-group .input-group-text {
+    background-color: transparent;
+    border: none; /* Quitamos bordes individuales del span */
+    padding-left: 0; /* Pegamos el icono al inicio */
+    padding-right: 0.75rem;
+    color: rgba(255, 255, 255, 0.8); /* Color del icono */
+    font-size: 1.1rem; /* Tamaño del icono */
+}
+
+/* Estilo del Input dentro del Grupo */
+.input-group .form-control {
+    background-color: transparent;
+    border: none; /* Quitamos bordes individuales del input */
+    color: white;
+    padding-left: 0.5rem; /* Pequeño espacio despues del icono */
+    box-shadow: none; /* Quita sombra de foco */
+    border-radius: 0; /* Asegura esquinas rectas */
+}
+
+/* Quitamos sombra al hacer focus (ya manejado por el focus-within del grupo) */
+.input-group .form-control:focus {
+    box-shadow: none;
+    background-color: transparent;
+    color: white;
+}
+
+/* Estilo para el placeholder */
+.input-group .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 1; /* Firefox */
+}
+.input-group .form-control:-ms-input-placeholder { /* IE 10-11 */
+  color: rgba(255, 255, 255, 0.6);
+}
+.input-group .form-control::-ms-input-placeholder { /* Edge */
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botón personalizado - Azul */
+/* Botón personalizado - Azul */
+.btn-ingresar {
+    background-color: #0d6efd; /* Azul primario (puedes elegir otro azul) */
+    border: none;
+    color: white;            /* Texto en color blanco */
+    padding: 10px 20px;      /* Espaciado interno */
+    border-radius: 5px;      /* Bordes redondeados (opcional) */
+    cursor: pointer;         /* Cursor de mano al pasar */
+    text-align: center;
+    font-size: 1rem;         /* Tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-ingresar:hover {
+    background-color: #0b5ed7; /* Azul más oscuro al pasar el ratón */
+    color: white;            /* Mantener texto blanco */
+}
+
+.btn-ingresar:active {
+    background-color: #0a58ca; /* Azul aún más oscuro al hacer clic */
+    transform: scale(0.98);  /* Pequeño efecto de presión */
+    color: white;            /* Mantener texto blanco */
+}
+
+/* Ajustes finos */
+.login-box h1 {
+    letter-spacing: 1px; /* Opcional: ligero espaciado entre letras */
+}

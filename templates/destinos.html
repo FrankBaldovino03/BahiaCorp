@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Destinos{% endblock %}
+
+{% block head %}
+    <script>
+        function filtrarDestinos() {
+            let input = document.getElementById("buscar").value.toLowerCase();
+            let filas = document.querySelectorAll("#tabla-destinos tbody tr");
+
+            filas.forEach(fila => {
+                let texto = fila.innerText.toLowerCase();
+                fila.style.display = texto.includes(input) ? "" : "none";
+            });
+        }
+
+        function cargarDatos(id, nombre, descripcion) {
+            document.getElementById("idEditar").value = id;
+            document.getElementById("nombreEditar").value = nombre;
+            document.getElementById("descripcionEditar").value = descripcion;
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h2>Gestión de Destinos</h2>
+
+    <!-- Formulario para agregar destinos -->
+    <form method="POST" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-5">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre del destino" required>
+            </div>
+            <div class="col-md-5">
+                <input type="text" name="descripcion" class="form-control" placeholder="Descripción" required>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Agregar</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Buscador de destinos -->
+    <div class="mb-3">
+        <input type="text" id="buscar" class="form-control" placeholder="Buscar destinos..." onkeyup="filtrarDestinos()">
+    </div>
+
+    <!-- Tabla de destinos -->
+    <h3>Lista de Destinos</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover mt-3" id="tabla-destinos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for destino in destinos %}
+                <tr>
+                    <td>{{ destino.id }}</td>
+                    <td>{{ destino.nombre }}</td>
+                    <td>{{ destino.descripcion }}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editarDestinoModal"
+                                onclick="cargarDatos('{{ destino.id }}', '{{ destino.nombre }}', '{{ destino.descripcion }}')">
+                            Editar
+                        </button>
+                        <form method="POST" action="{{ url_for('eliminar_destino', id=destino.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar destino?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para editar destino -->
+    <div class="modal fade" id="editarDestinoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Destino</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('editar_destino') }}">
+                        <input type="hidden" id="idEditar" name="id">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" id="nombreEditar" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" id="descripcionEditar" name="descripcion" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

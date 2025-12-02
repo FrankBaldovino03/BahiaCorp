@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Reservas{% endblock %}
+
+{% block head %}
+    <script>
+        function filtrarReservas() {
+            let input = document.getElementById("buscar").value.toLowerCase();
+            let filas = document.querySelectorAll("#tabla-reservas tbody tr");
+
+            filas.forEach(fila => {
+                let texto = fila.innerText.toLowerCase();
+                fila.style.display = texto.includes(input) ? "" : "none";
+            });
+        }
+
+        function cargarDatos(id, cliente, destino) {
+            document.getElementById("idEditar").value = id;
+            document.getElementById("clienteEditar").value = cliente;
+            document.getElementById("destinoEditar").value = destino;
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h2>Gestión de Reservas</h2>
+
+    <!-- Formulario para agregar reservas -->
+    <form method="POST" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <select name="cliente" class="form-select" required>
+                    <option value="">Seleccione un cliente</option>
+                    {% for cliente in clientes %}
+                        <option value="{{ cliente.nombre }}">{{ cliente.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="destino" class="form-select" required>
+                    <option value="">Seleccione un destino</option>
+                    {% for destino in destinos %}
+                        <option value="{{ destino.nombre }}">{{ destino.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">Agregar Reserva</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Buscador de reservas -->
+    <div class="mb-3">
+        <input type="text" id="buscar" class="form-control" placeholder="Buscar reservas..." onkeyup="filtrarReservas()">
+    </div>
+
+    <!-- Tabla de reservas -->
+    <h3>Lista de Reservas</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover mt-3" id="tabla-reservas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Destino</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.cliente }}</td>
+                    <td>{{ reserva.destino }}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editarReservaModal"
+                                onclick="cargarDatos('{{ reserva.id }}', '{{ reserva.cliente }}', '{{ reserva.destino }}')">
+                            Editar
+                        </button>
+                        <form method="POST" action="{{ url_for('eliminar_reserva', id=reserva.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar reserva?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para editar reserva -->
+    <div class="modal fade" id="editarReservaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('editar_reserva') }}">
+                        <input type="hidden" id="idEditar" name="id">
+                        <div class="mb-3">
+                            <label class="form-label">Cliente</label>
+                            <select id="clienteEditar" name="cliente" class="form-select" required>
+                                {% for cliente in clientes %}
+                                    <option value="{{ cliente.nombre }}">{{ cliente.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Destino</label>
+                            <select id="destinoEditar" name="destino" class="form-select" required>
+                                {% for destino in destinos %}
+                                    <option value="{{ destino.nombre }}">{{ destino.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

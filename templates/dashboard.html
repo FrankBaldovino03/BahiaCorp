@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Panel de Control</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">Gestiona la información de tus clientes.</p>
+                    <a href="{{ url_for('gestion_clientes') }}" class="btn btn-primary">
+                         <i class="bi bi-people me-2"></i>
+                        Administrar Clientes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Destinos</h5>
+                    <p class="card-text">Administra los destinos disponibles.</p>
+                    <a href="{{ url_for('gestion_destinos') }}" class="btn btn-success">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Administrar Destinos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Reservas</h5>
+                    <p class="card-text">Gestiona las reservas de tus clientes.</p>
+                    <a href="{{ url_for('gestion_reservas') }}" class="btn btn-warning">
+                        <i class="bi bi-calendar-check me-2"></i>
+                        Administrar Reservas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

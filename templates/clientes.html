@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Clientes{% endblock %}
+
+{% block head %}
+    <script>
+        function filtrarClientes() {
+            let input = document.getElementById("buscar").value.toLowerCase();
+            let filas = document.querySelectorAll("#tabla-clientes tbody tr");
+
+            filas.forEach(fila => {
+                let texto = fila.innerText.toLowerCase();
+                fila.style.display = texto.includes(input) ? "" : "none";
+            });
+        }
+
+        function cargarDatos(id, nombre, email, telefono) {
+            document.getElementById("idEditar").value = id;
+            document.getElementById("nombreEditar").value = nombre;
+            document.getElementById("emailEditar").value = email;
+            document.getElementById("telefonoEditar").value = telefono;
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h2>Gestión de Clientes</h2>
+
+    <!-- Formulario para agregar clientes -->
+    <form method="POST" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+            </div>
+            <div class="col-md-3">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="telefono" class="form-control" placeholder="Teléfono" required>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Agregar Cliente</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Buscador de clientes -->
+    <div class="mb-3">
+        <input type="text" id="buscar" class="form-control" placeholder="Buscar clientes..." onkeyup="filtrarClientes()">
+    </div>
+
+    <!-- Tabla de clientes -->
+    <h3>Lista de Clientes</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover mt-3" id="tabla-clientes">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editarClienteModal"
+                                onclick="cargarDatos('{{ cliente.id }}', '{{ cliente.nombre }}', '{{ cliente.email }}', '{{ cliente.telefono }}')">
+                            Editar
+                        </button>
+                        <form method="POST" action="{{ url_for('eliminar_cliente', id=cliente.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar cliente?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para editar cliente -->
+    <div class="modal fade" id="editarClienteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('editar_cliente') }}">
+                        <input type="hidden" id="idEditar" name="id">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" id="nombreEditar" name="nombre" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="emailEditar" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" id="telefonoEditar" name="telefono" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
